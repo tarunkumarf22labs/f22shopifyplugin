@@ -1,4 +1,17 @@
 {
-  "checkbox": [{}, {}, {}],
+  "checkbox": [
+    {
+      "id": "vehicle1",
+      "value": "Bike"
+    },
+    {
+      "id": "vehicle2",
+      "value": "Car"
+    },
+    {
+      "id": "vehicle3",
+      "value": "Boat"
+    }
+  ],
   "Radio": ["HTML", "CSS", "javaScript"]
 }

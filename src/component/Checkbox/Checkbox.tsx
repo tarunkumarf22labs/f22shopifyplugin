@@ -1,27 +1,29 @@
 import Preact from "preact";
-import {
-  interfaceforcontextvalueINITIAL_DATA,
-  logicComponentsprops,
-} from "../../types/Preacttwind";
+import useFetch, { Checkboxdatadata } from "../../utils/useFetch";
+import { extendedtypes } from "../../types";
+import { tw } from "twind";
 
-type handleremovexcesschild = {
-  handleremovexcesschild: (
-    property: keyof interfaceforcontextvalueINITIAL_DATA,
-    id: string
-  ) => void;
-};
-type extendedtypes = handleremovexcesschild & logicComponentsprops;
 function Checkbox({
   value,
   handleChange,
   handleremovexcesschild,
+  handleQuestionState,
 }: extendedtypes) {
-  //
+  function checkCheckboxDefault(eventValue: string) {
+    let val = value.checkbox.find((val: string) => val === eventValue);
+    if (val) {
+      return true;
+    }
+    return false;
+  }
+
+  // handleChecbox
 
   function handleChecbox(e: Preact.JSX.TargetedEvent<HTMLInputElement, Event>) {
-    const eventValue = e.target.value;
+    const target = e.target as HTMLInputElement;
+    const eventValue = target.value;
+
     let isChecked = value.checkbox.find((val: string) => val === eventValue);
-    console.log(isChecked);
 
     if (isChecked) {
       handleremovexcesschild("checkbox", eventValue);
@@ -30,46 +32,35 @@ function Checkbox({
     handleChange({ checkbox: [...value.checkbox, eventValue] });
   }
 
-  function checkCheckbox(eventValue: string) {
-    let val = value.checkbox.find((val: string) => val === eventValue);
-    if (val) {
-      return true;
-    }
-    return false;
-  }
-
   return (
     <>
-      <h1> {value.firstName} </h1>
-
-      <input
-        type="checkbox"
-        id="vehicle1"
-        name="vehicle1"
-        value="Bike"
-        defaultChecked={checkCheckbox("Bike")}
-        onChange={(e) => handleChecbox(e)}
-      />
-      <label htmlFor="vehicle1"> I have a bike</label>
-      <input
-        type="checkbox"
-        id="vehicle2"
-        name="vehicle2"
-        value="Car"
-        onChange={(e) => handleChecbox(e)}
-        defaultChecked={checkCheckbox("Car")}
-      />
-      <label htmlFor="vehicle2"> I have a car</label>
-      <input
-        type="checkbox"
-        id="vehicle3"
-        name="vehicle3"
-        value="Boat"
-        onChange={(e) => handleChecbox(e)}
-        defaultChecked={checkCheckbox("Boat")}
-      />
-      <label for="vehicle3"> I have a boat</label>
-      <br></br>
+      <div className={tw`   `}>
+        <h1> Tell your stylist about fabrics you prefer ? </h1>
+        {handleQuestionState?.("checkbox")?.map(
+          (e: { id: string; value: string }) => {
+            return (
+              <div
+                className={tw` ml-4 border-2 border-black my-4 p-2 relative ${
+                  checkCheckboxDefault(e.value) ? ` bg-black text-white ` : ``
+                } `}
+              >
+                <input
+                  type="checkbox"
+                  id={e.id}
+                  name={e.id}
+                  value={e.value}
+                  defaultChecked={checkCheckboxDefault(e.value)}
+                  onInput={(e) => handleChecbox(e)}
+                  className={tw` opacity-0 absolute top-0 bottom-0 w-full z-10`}
+                />
+                <label className={tw`w-full px-2 `} htmlFor={e.id}>
+                  {e.value}
+                </label>
+              </div>
+            );
+          }
+        )}
+      </div>
     </>
   );
 }

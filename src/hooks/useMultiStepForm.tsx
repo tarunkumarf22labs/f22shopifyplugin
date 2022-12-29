@@ -1,9 +1,9 @@
 import { useState } from "preact/hooks";
 import { ComponentChildren } from "preact";
 
-function usemultistepForm(steps: ComponentChildren[]) {
+function useMultistepForm(steps: ComponentChildren[]) {
   const [currentStepindex, setCurrentStepIndex] = useState<number>(0);
-  const cmpComponentsLength = steps.length
+  const cmpComponentsLength = steps.length;
   function next() {
     setCurrentStepIndex((i) => {
       if (i >= steps.length - 1) return i;
@@ -21,15 +21,15 @@ function usemultistepForm(steps: ComponentChildren[]) {
   function goTo(index: number) {
     setCurrentStepIndex(index);
   }
+
   return {
     currentStepindex,
     step: steps[currentStepindex],
     next,
     back,
     goTo,
-  cmpComponentsLength 
-
+    cmpComponentsLength,
   };
 }
 
-export default usemultistepForm;
+export default useMultistepForm;
