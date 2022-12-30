@@ -35,6 +35,22 @@ export interface Checkbox {
   value: string;
 }
 
+//
+
+export interface dataWelcome {
+  question: string;
+  type?: string;
+  options: Array<OptionClass>;
+}
+
+export interface OptionClass {
+  id?: string;
+  value?: string;
+  imgurl?: string;
+  item?: string;
+  pricerange?: string[];
+}
+
 //  type props
 
 export type mainmodalprops = {
@@ -49,7 +65,10 @@ export type PluginContextprops = {
 export type logicComponentsprops = {
   value: InitialContextData;
   handleChange: (fields: {}) => void;
-  handleQuestionState?: (id: keyof Record) => [];
+  handleQuestionState?: (id: string) => dataWelcome;
+  questiontype?: string;
+  inputbox?: boolean;
+  placheoldertext?: string;
 };
 
 export type handleremovexcesschild = {
@@ -62,3 +81,36 @@ export type handleremovexcesschild = {
 export type extendedtypes = handleremovexcesschild & logicComponentsprops;
 
 // typescript
+
+// api interface
+
+export interface dataWelcome {
+  question: string;
+  type?: string;
+  options: Array<OptionClass>;
+}
+
+export interface OptionClass {
+  id?: string;
+  value?: string;
+  imgurl?: string;
+  item?: string;
+  pricerange?: string[];
+}
+
+export interface Apiinterface {
+  record: Record[];
+  metadata: Metadata;
+}
+
+export interface Metadata {
+  id: string;
+  private: boolean;
+  createdAt: Date;
+}
+
+export interface Record {
+  question: string;
+  type?: string;
+  options: Array<OptionClass>;
+}

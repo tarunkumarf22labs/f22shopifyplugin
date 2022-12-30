@@ -1,17 +1,151 @@
-{
-  "checkbox": [
-    {
-      "id": "vehicle1",
-      "value": "Bike"
-    },
-    {
-      "id": "vehicle2",
-      "value": "Car"
-    },
-    {
-      "id": "vehicle3",
-      "value": "Boat"
-    }
-  ],
-  "Radio": ["HTML", "CSS", "javaScript"]
-}
+[
+  {
+    "question": "What products will you NEVER wear",
+    "type": "checkbox",
+    "options": [
+      {
+        "id": "Bottoms",
+        "value": "Bottoms"
+      },
+      {
+        "id": "Western Dress",
+        "value": "Western Dress"
+      },
+      {
+        "id": "Tops",
+        "value": "Tops"
+      },
+      {
+        "id": "Kurta/Kurti",
+        "value": "Kurta/Kurti"
+      },
+      {
+        "id": "Jacket/Cardigan",
+        "value": "Jacket/Cardigan"
+      },
+      {
+        "id": "Scarf/Dupatta",
+        "value": "Scarf/Dupatta"
+      },
+      {
+        "id": "Fashion Jewellery",
+        "value": "Fashion Jewellery"
+      },
+      {
+        "id": "Saree",
+        "value": "Saree"
+      }
+    ]
+  },
+  {
+    "question": "Tell your stylist about fabrics you prefer",
+    "type": "radio",
+    "options": [
+      "ll wear anything that is comfortable",
+      "I wear breathable fabrics like cotton, linen, viscose, rayon, etc.",
+      "I wear cotton and linen only"
+    ]
+  },
+  {
+    "question": "Sleeve styles that you wear",
+    "type": "checkbox/image",
+    "options": [
+      {
+        "id": "Sleeveless",
+        "value": "Sleeveless",
+        "imgurl": "https://stylenook.in/assets/sleevless-ic.png"
+      },
+      {
+        "id": "Cap Sleeves",
+        "value": "Cap Sleeves",
+        "imgurl": "https://stylenook.in/assets/sleevless-ic.png"
+      },
+      {
+        "id": "Half Sleeves",
+        "value": "Half Sleeves",
+        "imgurl": "https://stylenook.in/assets/half-sleeves-ic.png"
+      },
+      {
+        "id": "3/4th Sleeves",
+        "value": "3/4th Sleeves",
+        "imgurl": "https://stylenook.in/assets/3-4-sleeves-ic.png"
+      },
+      {
+        "id": "Full Sleeves",
+        "value": "Full Sleeves",
+        "imgurl": "https://stylenook.in/assets/full-sleeves-ic.png"
+      }
+    ]
+  },
+  {
+    "question": "Tell your stylist prints that you AVOID",
+    "type": "checkbox/image",
+    "options": [
+      {
+        "id": "Animals",
+        "value": "Animals",
+        "imgurl": "https://stylenook.in/assets/animal.jpg"
+      },
+      {
+        "id": "Polka dots",
+        "value": "Polka dots",
+        "imgurl": "https://stylenook.in/assets/polka.jpg"
+      },
+      {
+        "id": "Floral",
+        "value": "Floral",
+        "imgurl": "https://stylenook.in/assets/floral.jpg"
+      },
+      {
+        "id": "Hand block",
+        "value": "Hand block",
+        "imgurl": "https://stylenook.in/assets/block.jpg"
+      },
+      {
+        "id": "Geometric",
+        "value": "Geometric",
+        "imgurl": "https://stylenook.in/assets/geometric.jpg"
+      },
+      {
+        "id": "Checked",
+        "value": "Checked",
+        "imgurl": "https://stylenook.in/assets/checked.jpg"
+      },
+      {
+        "id": "Embroidery",
+        "value": "Embroidery",
+        "imgurl": "https://stylenook.in/assets/embroidery.jpg"
+      }
+    ]
+  },
+  {
+    "question": "How much do you normally spend on the following products",
+    "options": [
+      {
+        "item": "Tops",
+        "pricerange": ["1499", "1999", "2499", "2999", "2999+"]
+      },
+      {
+        "item": "Kurtas",
+        "pricerange": ["1499", "1999", "2499", "2999", "2999+"]
+      },
+      {
+        "item": "Western Dresses",
+        "pricerange": ["1499", "1999", "2499", "2999", "2999+"]
+      }
+    ]
+  },
+  {
+    "question": "Tell your stylist colours that you AVOID ",
+    "options": [
+      "cream",
+      "red",
+      "pink",
+      "orange",
+      "salad",
+      "burgundy",
+      "black",
+      "hello"
+    ]
+  }
+]

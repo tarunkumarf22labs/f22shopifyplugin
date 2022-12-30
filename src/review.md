@@ -2,10 +2,17 @@
 
 completed with logic part aprooved by ketan
 working on data flow
-completed 2 components styling
+completed 3 components styling
 
 
-<!--  -->
+<!-- day two log  --> (29 / 12/2022)
+completed integrating vitest and preact testing library 
+completed 2 components styling 
+
+
+<!-- day three log  -->
+
+
 
 
 

@@ -1,6 +1,5 @@
 import Preact from "preact";
-import useFetch, { Checkboxdatadata } from "../../utils/useFetch";
-import { extendedtypes } from "../../types";
+import { extendedtypes, OptionClass } from "../../types";
 import { tw } from "twind";
 
 function Checkbox({
@@ -8,7 +7,12 @@ function Checkbox({
   handleChange,
   handleremovexcesschild,
   handleQuestionState,
+  questiontype,
+  inputbox,
+  placheoldertext,
 }: extendedtypes) {
+   
+  // functions
   function checkCheckboxDefault(eventValue: string) {
     let val = value.checkbox.find((val: string) => val === eventValue);
     if (val) {
@@ -16,8 +20,6 @@ function Checkbox({
     }
     return false;
   }
-
-  // handleChecbox
 
   function handleChecbox(e: Preact.JSX.TargetedEvent<HTMLInputElement, Event>) {
     const target = e.target as HTMLInputElement;
@@ -32,16 +34,28 @@ function Checkbox({
     handleChange({ checkbox: [...value.checkbox, eventValue] });
   }
 
+
+  let val = handleQuestionState?.(questiontype!);
+  if (typeof val === "undefined") return <div></div>;
+
+  let { question, options, type } = val;
+  console.log(question);
+
+  console.log(type === "checkbox/image", type);
+
   return (
     <>
-      <div className={tw`   `}>
-        <h1> Tell your stylist about fabrics you prefer ? </h1>
-        {handleQuestionState?.("checkbox")?.map(
-          (e: { id: string; value: string }) => {
-            return (
+      <h1> {question} </h1>
+      <div className={tw`grid grid-cols-4 justify-center  `}>
+        {options?.map((e: OptionClass | string, i: number) => {
+          if (typeof e === "string") return;
+          return (
+            <>
               <div
-                className={tw` ml-4 border-2 border-black my-4 p-2 relative ${
-                  checkCheckboxDefault(e.value) ? ` bg-black text-white ` : ``
+                className={tw` ml-4 border-2 border-black my-4 p-2 relative  ${
+                  checkCheckboxDefault(e.value as string)
+                    ? ` bg-pink-300 text-white `
+                    : ``
                 } `}
               >
                 <input
@@ -49,17 +63,41 @@ function Checkbox({
                   id={e.id}
                   name={e.id}
                   value={e.value}
-                  defaultChecked={checkCheckboxDefault(e.value)}
+                  defaultChecked={checkCheckboxDefault(e.value as string)}
                   onInput={(e) => handleChecbox(e)}
                   className={tw` opacity-0 absolute top-0 bottom-0 w-full z-10`}
                 />
-                <label className={tw`w-full px-2 `} htmlFor={e.id}>
+                {type === "checkbox/image" ? (
+                  <div className="">
+                    <img className="p-8" src={e.imgurl} />
+                  </div>
+                ) : (
+                  ""
+                )}
+                <label
+                  className={tw`w-full px-2 whitespace-nowrap `}
+                  htmlFor={e.id}
+                >
                   {e.value}
                 </label>
               </div>
-            );
-          }
-        )}
+
+              {inputbox === true && options.length === i + 1 ? (
+                <div
+                  className={tw` ml-4 border-2 border-black my-4 relative   `}
+                >
+                  <input
+                    type="input"
+                    placeholder={placheoldertext}
+                    className={tw` outline-none p-2 absolute top-0 bottom-0 w-full z-10`}
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+            </>
+          );
+        })}
       </div>
     </>
   );

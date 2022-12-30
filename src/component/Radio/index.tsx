@@ -1,10 +1,11 @@
-import { logicComponentsprops } from "../../types";
+import { logicComponentsprops, OptionClass } from "../../types";
 import Preact from "preact";
 import { tw } from "twind";
 function Radio({
   value,
   handleChange,
   handleQuestionState,
+  questiontype,
 }: logicComponentsprops) {
   function handleradio(e: Preact.JSX.TargetedEvent<HTMLInputElement, Event>) {
     const target = e.target as HTMLInputElement;
@@ -19,17 +20,21 @@ function Radio({
       false;
     }
   }
-
+  const questionData = handleQuestionState?.(questiontype!);
+  if (!questionData) return <div></div>;
+  const { question, options } = questionData;
   return (
     <div className={tw` h-80 w-96  `}>
-      <h2>What products will you NEVER wear?</h2>
+      <h2>{question} ?</h2>
       <h4>You can select only one option</h4>
       <div className={tw`mt-4`}>
-        {handleQuestionState?.("Radio").map((e: string) => {
+        {options?.map((e: any) => {
           return (
             <div
               className={tw` border-2  border-black my-4 p-1 relative ${
-                checkradioDefault(e) ? ` bg-pink-200  text-white ` : ``
+                checkradioDefault(e as string)
+                  ? ` bg-pink-200  text-white `
+                  : ``
               } `}
             >
               <input
@@ -39,7 +44,7 @@ function Radio({
                 value={e}
                 className={tw` opacity-0 absolute top-0 bottom-0 w-full z-10`}
                 onChange={handleradio}
-                defaultChecked={checkradioDefault(e)}
+                defaultChecked={checkradioDefault(e as string)}
               />
               <label htmlFor={e} className={tw`pl-1`}>
                 {e}
